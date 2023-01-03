@@ -42,6 +42,8 @@ sql_part_values = "\n({},\"{}\",{}),"
 for i in part:
 	sql_insert_part += sql_part_values.format(*i)
 
+sql_insert_part = sql_insert_part[:-1] + ";"
+
 with open("dmlParticipacao.sql", "w") as file1:
 	file1.write(sql_insert_part)
 
