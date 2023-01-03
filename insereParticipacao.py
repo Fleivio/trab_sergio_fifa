@@ -34,7 +34,7 @@ for index, p in partida.iterrows():
 			team.append(p["home_team_api_id"])
 			player.append(int(p["home_player_"+str(i)]))
 
-part = list(zip(player, season, team))
+part = list(dict.fromkeys(list(zip(player, season, team))))
 
 sql_insert_part = "insert into Participacao (jogador_api_id, temporada, id_time) values "
 sql_part_values = "\n({},\"{}\",{}),"
