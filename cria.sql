@@ -13,7 +13,7 @@ CREATE TABLE `Jogador` (
 drop table if exists `Participacao`;
 create table `Participacao`(
     `jogador_api_id` int,
-    `data` datetime,
+    `temporada` varchar(10),
     `id_time` int,
     primary key (`jogador_api_id`, `data`)
     constraint foreign key (`jogador_api_id`) references `Jogador` (`jogador_api_id`),

@@ -297,7 +297,7 @@ insert into Time (id_time, time_nome, time_sigla) values
 (10191,"FC Thun","THU"),
 (9777,"Servette FC","SER"),
 (7730,"FC Lausanne-Sports","LAU"),
-(7896,"Lugano","LUG"),
+(7896,"Lugano","LUG");
 
 
 
@@ -307,8 +307,8 @@ insert into Time (id_time, time_nome, time_sigla) values
 
 
 
-
-insert into Jogador (jogador_api_id, nome, data_nascimento) values (505942,"Aaron Appindangoye","1992-02-29 00:00:00"),
+insert into Jogador (jogador_api_id, nome, data_nascimento) values 
+(505942,"Aaron Appindangoye","1992-02-29 00:00:00"),
 (155782,"Aaron Cresswell","1989-12-15 00:00:00"),
 (162549,"Aaron Doran","1991-05-13 00:00:00"),
 (30572,"Aaron Galindo","1982-05-08 00:00:00"),
@@ -11367,4 +11367,4 @@ insert into Jogador (jogador_api_id, nome, data_nascimento) values (505942,"Aaro
 (111182,"Zsolt Laczko","1986-12-18 00:00:00"),
 (36491,"Zsolt Low","1979-04-29 00:00:00"),
 (35506,"Zurab Khizanishvili","1981-10-06 00:00:00"),
-(39902,"Zvjezdan Misimovic","1982-06-05 00:00:00"),
+(39902,"Zvjezdan Misimovic","1982-06-05 00:00:00");
