@@ -31,4 +31,4 @@ Além dessas três tabelas, é necessário uma para manter o relacionamento entr
 - temporada em que o jogador esteve no time
 
 
-Fonte utilizada (https://www.kaggle.com/datasets/hugomathien/soccer)
+[Fonte utilizada](https://www.kaggle.com/datasets/hugomathien/soccer)
