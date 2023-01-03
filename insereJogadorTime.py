@@ -39,7 +39,8 @@ def gen_team_query():
     return sql_insert_team
 
 
-with open("insere.sql", "w") as sql_insere:
-    sql_insere.write(gen_team_query())
-    sql_insere.write("\n" * 10)
-    sql_insere.write(gen_player_query())
+with open("dmlJogador.sql", "w") as player_insert:
+    player_insert.write(gen_player_query())
+
+with open("dmlTime.sql", "w") as team_insert:
+    team_insert.write(gen_team_query())

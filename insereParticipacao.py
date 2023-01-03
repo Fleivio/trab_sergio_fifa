@@ -42,7 +42,7 @@ sql_part_values = "\n({},\"{}\",{}),"
 for i in part:
 	sql_insert_part += sql_part_values.format(*i)
 
-with open("inserePart.sql", "w") as file1:
+with open("dmlParticipacao.sql", "w") as file1:
 	file1.write(sql_insert_part)
 
 
