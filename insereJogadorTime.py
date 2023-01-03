@@ -1,8 +1,6 @@
 import sqlite3
 import pandas as pd
 
-cnx = sqlite3.connect('./database.sqlite')
-
 
 def gen_insert_query(df, values_format):
     result = ""
@@ -10,10 +8,10 @@ def gen_insert_query(df, values_format):
         line = df.values[i]
         result += values_format.format(*line)
 
-    return result[:-1] + ';'
+    return result[:-1] + ";\n"
 
 
-def gen_player_query():
+def gen_player_query(cnx):
     player_query = "SELECT player_api_id, player_name, birthday, height, weight FROM Player"
 
     df = pd.read_sql_query(player_query, cnx)
@@ -26,7 +24,7 @@ def gen_player_query():
     return sql_insert_player
 
 
-def gen_team_query():
+def gen_team_query(cnx):
     team_query = "SELECT team_api_id, team_long_name, team_short_name FROM Team"
 
     df = pd.read_sql_query(team_query, cnx)
@@ -39,8 +37,9 @@ def gen_team_query():
     return sql_insert_team
 
 
-with open("dmlJogador.sql", "w") as player_insert:
-    player_insert.write(gen_player_query())
-
-with open("dmlTime.sql", "w") as team_insert:
-    team_insert.write(gen_team_query())
+if __name__ == "__main__":
+    cnx = sqlite3.connect('./database.sqlite')
+    with open("dmlTime.sql", "w") as team_insert:
+        team_insert.write(gen_team_query(cnx))
+    with open("dmlJogador.sql", "w") as player_insert:
+        player_insert.write(gen_player_query(cnx))
