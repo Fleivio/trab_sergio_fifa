@@ -23,7 +23,7 @@ create table `Participacao`(
     `jogador_api_id` int,
     `temporada` varchar(10),
     `id_time` int,
-    primary key (`jogador_api_id`, `temporada`),
+    primary key (`jogador_api_id`, `temporada`, `id_time`),
     foreign key (`jogador_api_id`) references `Jogador` (`jogador_api_id`),
     foreign key (`id_time`) references `Time` (`id_time`)
 );
