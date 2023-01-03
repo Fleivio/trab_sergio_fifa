@@ -5,7 +5,7 @@ USE `trabSergio`;
 DROP TABLE IF EXISTS `Jogador`;
 CREATE TABLE `Jogador` (
   `jogador_api_id` int,
-  `nome` varchar(20),
+  `nome` varchar(50),
   `data_nascimento` datetime,
   PRIMARY KEY (`jogador_api_id`)
 );
@@ -13,7 +13,7 @@ CREATE TABLE `Jogador` (
 DROP TABLE IF EXISTS `Time`;
 CREATE TABLE `Time` (
     `id_time` int,
-    `time_nome` varchar(20),
+    `time_nome` varchar(50),
     `time_sigla` varchar(10),
     primary key (`id_time`)
 );
