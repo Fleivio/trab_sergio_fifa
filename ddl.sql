@@ -7,6 +7,8 @@ CREATE TABLE `Jogador` (
   `jogador_api_id` int,
   `nome` varchar(50),
   `data_nascimento` datetime,
+  `altura` decimal(5, 2),
+  `peso` int,
   PRIMARY KEY (`jogador_api_id`)
 );
 

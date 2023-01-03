@@ -14,12 +14,12 @@ def gen_insert_query(df, values_format):
 
 
 def gen_player_query():
-    player_query = "SELECT player_api_id, player_name, birthday FROM Player"
+    player_query = "SELECT player_api_id, player_name, birthday, height, weight FROM Player"
 
     df = pd.read_sql_query(player_query, cnx)
 
-    sql_insert_player = "insert into Jogador (jogador_api_id, nome, data_nascimento) values "
-    sql_player_values = "\n({},\"{}\",\"{}\"),"
+    sql_insert_player = "insert into Jogador (jogador_api_id, nome, data_nascimento, altura, peso) values "
+    sql_player_values = "\n({},\"{}\",\"{}\", {}, {}),"
 
     sql_insert_player += gen_insert_query(df, sql_player_values)
 
