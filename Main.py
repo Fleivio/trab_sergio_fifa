@@ -6,7 +6,7 @@ import sqlite3
 
 cnx = sqlite3.connect('./database.sqlite')
 
-with open("dml.sql", "w") as file1:
+with open("dml.sql", "w", encoding="UTF-8") as file1:
     file1.write(gen_team_query(cnx))
     file1.write(gen_player_query(cnx))
     file1.write(gen_part_query(cnx))

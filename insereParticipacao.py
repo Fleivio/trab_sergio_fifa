@@ -20,34 +20,64 @@ def set_df(cnx):
 
 	return partida
 
+def join_season(part):
+    seasons = dict()
+    for player, season, team in part:
+        key = (player, team)
+        if key in seasons:
+            seasons[key].append(season)
+        else:
+            seasons[key] = [season]
+
+    result = []
+    for (player, team), season_list in seasons.items():
+        season_list = sorted(map(lambda season: int(season.split("/")[0]), season_list))
+        
+        first = last = None
+        for season in season_list:
+            if first is None:
+                first = last = season
+            elif season - last > 1:
+                result.append((player, first, last, team))
+                first = last = season
+            else:
+                last = season
+        if first is not None:
+            result.append((player, first, last, team))
+
+    return result
+            
+        
+
+
 def gen_part_query(cnx):
-	partida = set_df(cnx)
-	season = []
-	team = []
-	player = []
+    partida = set_df(cnx)
+    season = []
+    team = []
+    player = []
 
-	for index, p in partida.iterrows():
-		for i in range(1, 12):
-			if not pd.isna(p["away_player_"+str(i)]):
-				season.append(p["season"])
-				team.append(p["away_team_api_id"])
-				player.append(int(p["away_player_"+str(i)]))
-			if not pd.isna(p["home_player_"+str(i)]):
-				season.append(p["season"])
-				team.append(p["home_team_api_id"])
-				player.append(int(p["home_player_"+str(i)]))
+    for index, p in partida.iterrows():
+        for i in range(1, 12):
+            if not pd.isna(p["away_player_"+str(i)]):
+                season.append(p["season"])
+                team.append(p["away_team_api_id"])
+                player.append(int(p["away_player_"+str(i)]))
+            if not pd.isna(p["home_player_"+str(i)]):
+                season.append(p["season"])
+                team.append(p["home_team_api_id"])
+                player.append(int(p["home_player_"+str(i)]))
 
-	part = list(dict.fromkeys(list(zip(player, season, team))))
+    part = join_season(list(dict.fromkeys(list(zip(player, season, team)))))
+    
+    sql_insert_part = "insert into Participacao (jogador_api_id, temporada_ini, temporada_fim, id_time) values "
+    sql_part_values = "\n({},{},{},{}),"
 
-	sql_insert_part = "insert into Participacao (jogador_api_id, temporada, id_time) values "
-	sql_part_values = "\n({},\"{}\",{}),"
+    for i in part:
+        sql_insert_part += sql_part_values.format(*i)
 
-	for i in part:
-		sql_insert_part += sql_part_values.format(*i)
+    sql_insert_part = sql_insert_part[:-1] + ";\n"
 
-	sql_insert_part = sql_insert_part[:-1] + ";\n"
-
-	return sql_insert_part
+    return sql_insert_part
 
 
 if __name__ == "__main__":
