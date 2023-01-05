@@ -2,13 +2,12 @@
 
 Armazena informações sobre jogadores, times de futebol, suas relações e partidas do campeonato europeu, entre os anos de 2009 e 2016. 
 
-
 ## Para jogadores, armazena-se:
 - seu nome
 - sua data de nascimento
 - seu id
 - sua altura
-- seu peso
+- seu peso (em libras)
 
 ## Para times, armazena-se
 - seu id
@@ -28,7 +27,8 @@ Além dessas três tabelas, é necessário uma para manter o relacionamento entr
 ## A tabela Participacao armazena
 - id do jogador
 - id do time
-- temporada em que o jogador esteve no time
+- temporada inicial em que o jogador esteve no time
+- temporada final em que o jogador esteve no time
 
 
 [Fonte utilizada](https://www.kaggle.com/datasets/hugomathien/soccer)

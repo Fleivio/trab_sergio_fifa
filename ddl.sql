@@ -1,6 +1,6 @@
-drop database if exists `trabSergio`;
-CREATE DATABASE  IF NOT EXISTS `trabSergio`;
-USE `trabSergio`;
+drop database if exists `trabFDB`;
+CREATE DATABASE  IF NOT EXISTS `trabFDB`;
+USE `trabFDB`;
 
 DROP TABLE IF EXISTS `Jogador`;
 CREATE TABLE `Jogador` (
