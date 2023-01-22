@@ -43,6 +43,14 @@ CREATE TABLE `Liga`
     PRIMARY KEY (`idLiga`)
 );
 
+CREATE TABLE `Time_Liga` (
+    `idLiga` int,
+    `id_time` int,
+    primary key (idLiga, id_time),
+    foreign key (`id_time`) references `Time` (`id_time`),
+    foreign key (`idLiga`) references `Liga` (`idLiga`)
+);
+
 drop table if exists `Participacao`;
 create table `Participacao`
 (
