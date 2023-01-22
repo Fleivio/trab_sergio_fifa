@@ -20,7 +20,8 @@ CREATE TABLE `Valor_Jogador`
     `temporada_ini`  int,
     `temporada_fim`  int,
     `valor_euros`    long,
-    primary key (`jogador_api_id`, `temporada_ini`)
+    primary key (`jogador_api_id`, `temporada_ini`),
+    foreign key (`jogador_api_id`) references `Jogador` (`jogador_api_id`)
 );
 
 DROP TABLE IF EXISTS `Time`;
